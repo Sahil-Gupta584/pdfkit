@@ -6,10 +6,10 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 
-if (!supabaseUrl || !supabaseKey) throw new Error("Invalid Supabase keys");
 
-const supabase = createClient(supabaseUrl, supabaseKey);
 async function uploadFileToSupabase(file: File) {
+  if (!supabaseUrl || !supabaseKey) throw new Error("Invalid Supabase keys");
+  const supabase = createClient(supabaseUrl, supabaseKey);
   try {
     const bucketName = "pdfkit"; // Replace with your bucket name
     const filePath = `${Date.now()}-${file.name}`; // Unique file name
