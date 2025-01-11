@@ -81,7 +81,7 @@ export function ConversionTool({ selectedTool, file, setFile, onBack }: Conversi
         setMergingFiles={setMergingFiles}
       />
       {file && (
-        <div className="mt-6 text-center">
+        <div className="mt-6 text-center text-black">
           <p className="text-sm text-gray-600">
             Selected file: <span className="font-medium">{file.name}</span>
             {mergingFiles.map((mergingFile, i) =>
@@ -163,7 +163,7 @@ export function ConversionTool({ selectedTool, file, setFile, onBack }: Conversi
                   onClick={handleSubmit}
                   disabled={isLoading}
                 >
-                  {isLoading ? 'Converting...' : 'Convert Now'}
+                  {isLoading ? 'Processing...' : 'Start Process'}
                 </button>
           }
         </div>
