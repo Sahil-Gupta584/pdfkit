@@ -3,9 +3,10 @@ import { TTool } from "../types";
 import ILovePDFApi from "@ilovepdf/ilovepdf-nodejs";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = "https://gnhevvitkwlfnrgyaaal.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaGV2dml0a3dsZm5yZ3lhYWFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY0ODQ4OTMsImV4cCI6MjA1MjA2MDg5M30.dimu4pB6TN1MWRLzeRztkVGcUiJbSfddm1q3BvPokZI";
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+
+if (!supabaseUrl || !supabaseKey) throw new Error("Invalid Supabase keys");
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 async function uploadFileToSupabase(file: File) {
@@ -56,9 +57,10 @@ export async function POST(req: NextRequest) {
 
     const publicKey = process.env.PUBLIC_KEY;
     const secretKey = process.env.SECRET_KEY;
-    
-    if(!publicKey || !secretKey)return NextResponse.json({ error: "Invalid API keys" })
-  
+
+    if (!publicKey || !secretKey)
+      return NextResponse.json({ error: "Invalid API keys" });
+
     const ilovepdf = new ILovePDFApi(publicKey, secretKey);
     console.log(JSON.parse(formdata.get("tool") as string).taskType);
 
@@ -75,7 +77,6 @@ export async function POST(req: NextRequest) {
       }
     }
 
-
     const fileURL = await uploadFileToSupabase(file);
     await task.addFile(fileURL);
     await task.process(
@@ -88,7 +89,7 @@ export async function POST(req: NextRequest) {
     const data = await task.download();
     console.log("data", data);
 
-    const blob = new Blob([data], { type: "application/pdf" }); 
+    const blob = new Blob([data], { type: "application/pdf" });
     const arrayBuffer = await blob.arrayBuffer();
 
     return new Response(arrayBuffer, {
