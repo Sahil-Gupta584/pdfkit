@@ -57,6 +57,8 @@ export async function POST(req: NextRequest) {
     const publicKey = process.env.PUBLIC_KEY;
     const secretKey = process.env.SECRET_KEY;
     
+    if(!publicKey || !secretKey)return NextResponse.json({ error: "Invalid API keys" })
+  
     const ilovepdf = new ILovePDFApi(publicKey, secretKey);
     console.log(JSON.parse(formdata.get("tool") as string).taskType);
 
