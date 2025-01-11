@@ -1,6 +1,5 @@
-import { Merge, Split, RotateCw, Stamp, Hash } from 'lucide-react';
-import React from 'react';
-import { TTool  } from '../../types';
+import { Merge, Split, Hash } from 'lucide-react';
+import { TTool } from '../../types';
 import { ToolCategory } from '../toolCategories';
 
 export const editTools: TTool[] = [
@@ -11,8 +10,7 @@ export const editTools: TTool[] = [
     icon: <Merge />,
     category: ToolCategory.EDIT,
     acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
+    taskType: 'merge',
   },
   {
     id: 'split-pdf',
@@ -21,29 +19,26 @@ export const editTools: TTool[] = [
     icon: <Split />,
     category: ToolCategory.EDIT,
     acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
+    taskType: 'split',
   },
-  {
-    id: 'rotate-pdf',
-    title: 'Rotate PDF',
-    description: 'Rotate PDF pages to desired orientation',
-    icon: <RotateCw />,
-    category: ToolCategory.EDIT,
-    acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
-  },
-  {
-    id: 'add-watermark',
-    title: 'Add Watermark',
-    description: 'Add custom watermarks to PDF documents',
-    icon: <Stamp />,
-    category: ToolCategory.EDIT,
-    acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
-  },
+  // {
+  //   id: 'rotate-pdf',
+  //   title: 'Rotate PDF',
+  //   description: 'Rotate PDF pages to desired orientation',
+  //   icon: <RotateCw />,
+  //   category: ToolCategory.EDIT,
+  //   acceptedTypes: ['application/pdf'],
+  //   taskType: 'rotate',
+  // },
+  // {
+  //   id: 'add-watermark',
+  //   title: 'Add Watermark',
+  //   description: 'Add custom watermarks to PDF documents',
+  //   icon: <Stamp />,
+  //   category: ToolCategory.EDIT,
+  //   acceptedTypes: ['application/pdf'],
+  //   taskType: 'watermark',
+  // },
   {
     id: 'add-page-numbers',
     title: 'Add Page Numbers',
@@ -51,7 +46,6 @@ export const editTools: TTool[] = [
     icon: <Hash />,
     category: ToolCategory.EDIT,
     acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
-  }
+    taskType: 'pagenumber',
+  },
 ];

@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { ToolGrid } from './components/ToolGrid';
 import { ConversionTool } from './components/ConversionTool';
+import { TTool } from './types';
 
 export default function Home() {
-  const [selectedTool, setSelectedTool] = useState<string | null>(null);
+  const [selectedTool, setSelectedTool] = useState<TTool | null>(null);
   const [file, setFile] = useState<File | null>(null);
 
   const handleBack = () => {
@@ -33,7 +34,7 @@ export default function Home() {
           <ConversionTool
             selectedTool={selectedTool}
             file={file}
-            onFileSelect={setFile}
+            setFile={setFile}
             onBack={handleBack}
           />
         )}

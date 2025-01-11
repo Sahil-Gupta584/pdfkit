@@ -18,15 +18,16 @@ export function ToolGrid({ onToolSelect }: ToolGridProps) {
               {category}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categoryTools.map((tool) => (
+              {categoryTools.map((tool) => {                
+                return(
                 <ConversionCard
                   key={tool.id}
                   title={tool.title}
                   description={tool.description}
                   icon={tool.icon}
-                  onClick={() => onToolSelect(tool.id)}
+                  onClick={() => onToolSelect(tool)}
                 />
-              ))}
+              )})}
             </div>
           </div>
         );

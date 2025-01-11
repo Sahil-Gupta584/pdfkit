@@ -2,7 +2,7 @@ import React from 'react';
 import { Upload } from 'lucide-react';
 import { FileUploadProps } from '../types';
 
-export function UploadZone({ onFileSelect, acceptedTypes }: FileUploadProps) {
+export function UploadZone({ onFileSelect, acceptedTypes, selectedTool,setMergingFiles }: FileUploadProps) {
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
   };
@@ -17,8 +17,19 @@ export function UploadZone({ onFileSelect, acceptedTypes }: FileUploadProps) {
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
+    const  mergingFiles=[]
+
     if (files && files.length > 0) {
+      
       onFileSelect(files[0]);
+      
+      for (const file of files) {
+        console.log(file);
+        mergingFiles.push(file)
+      }
+      console.log('mergingFiles',mergingFiles);
+      
+      setMergingFiles(mergingFiles)
     }
   };
 
@@ -34,6 +45,7 @@ export function UploadZone({ onFileSelect, acceptedTypes }: FileUploadProps) {
         onChange={handleFileInput}
         className="hidden"
         id="fileInput"
+        multiple={selectedTool.taskType === 'merge' ? true : false}
       />
       <label
         htmlFor="fileInput"

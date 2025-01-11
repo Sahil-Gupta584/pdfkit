@@ -1,6 +1,6 @@
-import { Lock, Unlock, FileSignature } from 'lucide-react';
+import { Lock, Unlock } from 'lucide-react';
 import React from 'react';
-import { TTool  } from '../../types';
+import { TTool } from '../../types';
 import { ToolCategory } from '../toolCategories';
 
 export const securityTools: TTool[] = [
@@ -11,8 +11,7 @@ export const securityTools: TTool[] = [
     icon: <Lock />,
     category: ToolCategory.SECURITY,
     acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
+    taskType: 'protect',
   },
   {
     id: 'unlock-pdf',
@@ -21,17 +20,15 @@ export const securityTools: TTool[] = [
     icon: <Unlock />,
     category: ToolCategory.SECURITY,
     acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
+    taskType: 'unlock',
   },
-  {
-    id: 'sign-pdf',
-    title: 'Sign PDF',
-    description: 'Digitally sign PDF documents',
-    icon: <FileSignature />,
-    category: ToolCategory.SECURITY,
-    acceptedTypes: ['application/pdf'],
-    fileInputType:'PDF',
-    fileExportType:'PDF'
-  }
+  // {
+  //   id: 'sign-pdf',
+  //   title: 'Sign PDF',
+  //   description: 'Digitally sign PDF documents',
+  //   icon: <FileSignature />,
+  //   category: ToolCategory.SECURITY,
+  //   acceptedTypes: ['application/pdf'],
+  //   taskType: 'sign',
+  // },
 ];

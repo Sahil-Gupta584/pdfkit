@@ -7,16 +7,17 @@ export interface TTool {
   icon: React.ReactNode;
   acceptedTypes: string[];
   category: ToolCategory;
-  fileInputType:'AI'|'BMP'|'CSV'|'DOC'|'DOCX'|'GIF'|'HTML'|'JPEG'|'JPG'|'JSON'|'PDF'|'PNG'|'PPT'|'PPTX'|'PSD'|'TIF'|'TIFF'|'TXT'|'XLS'|'XLSX'|'ZIP';
-  fileExportType:'AI'|'BMP'|'CSV'|'DOC'|'DOCX'|'GIF'|'HTML'|'JPEG'|'JPG'|'JSON'|'PDF'|'PNG'|'PPT'|'PPTX'|'PSD'|'TIF'|'TIFF'|'TXT'|'XLS'|'XLSX'|'ZIP';
+  taskType:'compress'|'merge'|'editpdf'|'extract'|'htmlpdf'|'imagepdf'|'merge'|'officepdf'|'pagenumber'|'pdfa'|'pdfjpg'|'pdfocr'|'protect'|'repair'|'rotate'|'sign'|'split'|'unlock'|'validatepdfa'|'watermark'
 }
 
 
 export interface FileUploadProps {
   onFileSelect: (file: File) => void;
   acceptedTypes: string[];
+  selectedTool:TTool
+  setMergingFiles:(files:File[])=>void
 }
 
 export interface ToolGridProps {
-  onToolSelect: (toolId: string) => void;
+  onToolSelect: (tool:TTool) => void;
 }
