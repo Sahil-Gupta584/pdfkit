@@ -1,4 +1,4 @@
-import { FileSpreadsheet, Image, File, FileType } from "lucide-react";
+import { Image, File } from "lucide-react";
 import React from "react";
 import { TTool } from "../../types";
 import { ToolCategory } from "../toolCategories";
