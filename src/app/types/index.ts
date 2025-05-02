@@ -9,6 +9,7 @@ export interface TTool {
   category: ToolCategory;
   handler:
     | "pdfdocx"
+    | "docxpdf"
     | "pdfdoc"
     | "pdfpptx"
     | "pdfrtf"
