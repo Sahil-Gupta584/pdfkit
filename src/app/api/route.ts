@@ -25,9 +25,6 @@ import {
   CombinePDFParams,
   CombinePDFJob,
   CompressPDFJob,
-  ExtractPDFParams,
-  ExtractElementType,
-  ExtractPDFJob,
   ExportPDFToImagesResult,
   ExtractPDFResult,
   CreatePDFResult,
@@ -239,16 +236,6 @@ export async function POST(req: NextRequest) {
         job = new CompressPDFJob({ inputAsset: inputAsset });
 
         break;
-      case "extractpdf":
-        if (!inputAsset) throw new Error("Input asset is required.");
-        job = new ExtractPDFJob({
-          inputAsset: inputAsset,
-          params: new ExtractPDFParams({
-            elementsToExtract: [ExtractElementType.TEXT],
-          }),
-        });
-
-        break;
     }
 
     if (!job) throw new Error("Failed to get job");
@@ -307,10 +294,6 @@ export async function POST(req: NextRequest) {
     switch (tool.handler) {
       case "pdfdocx":
         contentType = "application/msword";
-        break;
-
-      case "pdfrtf":
-        contentType = "application/rtf";
         break;
 
       case "pdfimg":
