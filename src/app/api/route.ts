@@ -299,9 +299,6 @@ export async function POST(req: NextRequest) {
       case "pdfimg":
         contentType = "application/zip";
         break;
-
-      default:
-        contentType = "application/json";
     }
     console.log({ contentType, file });
 
