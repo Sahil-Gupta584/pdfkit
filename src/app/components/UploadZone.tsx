@@ -1,8 +1,13 @@
-import React from 'react';
-import { Upload } from 'lucide-react';
-import { FileUploadProps } from '../types';
+import React from "react";
+import { Upload } from "lucide-react";
+import { FileUploadProps } from "../types";
 
-export function UploadZone({ onFileSelect, acceptedTypes, selectedTool,setMergingFiles }: FileUploadProps) {
+export function UploadZone({
+  onFileSelect,
+  acceptedTypes,
+  selectedTool,
+  setMergingFiles,
+}: FileUploadProps) {
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
   };
@@ -17,19 +22,18 @@ export function UploadZone({ onFileSelect, acceptedTypes, selectedTool,setMergin
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    const  mergingFiles=[]
+    const mergingFiles: File[] = [];
 
     if (files && files.length > 0) {
-      
-      onFileSelect(files[0]);
-      
-      for (const file of files) {
-        console.log(file);
-        mergingFiles.push(file)
+      if (selectedTool.handler === "mergepdf") {
+        for (const file of files) {
+          console.log(file);
+          mergingFiles.push(file);
+        }
+        setMergingFiles(mergingFiles);
+      } else {
+        onFileSelect(files[0]);
       }
-      console.log('mergingFiles',mergingFiles);
-      
-      setMergingFiles(mergingFiles)
     }
   };
 
@@ -41,11 +45,11 @@ export function UploadZone({ onFileSelect, acceptedTypes, selectedTool,setMergin
     >
       <input
         type="file"
-        accept={acceptedTypes.join(',')}
+        accept={acceptedTypes.join(",")}
         onChange={handleFileInput}
         className="hidden"
         id="fileInput"
-        multiple={selectedTool.taskType === 'merge' ? true : false}
+        multiple={selectedTool.handler === "mergepdf" ? true : false}
       />
       <label
         htmlFor="fileInput"
@@ -57,7 +61,7 @@ export function UploadZone({ onFileSelect, acceptedTypes, selectedTool,setMergin
         <p className="text-lg font-medium text-gray-900">Drop your file here</p>
         <p className="text-sm text-gray-500 mt-1">or click to browse</p>
         <p className="text-xs text-gray-400 mt-2">
-          Supported formats: {acceptedTypes.join(', ')}
+          Supported formats: {acceptedTypes.join(", ")}
         </p>
       </label>
     </div>

@@ -1,9 +1,9 @@
-'use client';
-import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { ToolGrid } from './components/ToolGrid';
-import { ConversionTool } from './components/ConversionTool';
-import { TTool } from './types';
+"use client";
+import React, { useState } from "react";
+import { Header } from "./components/Header";
+import { ToolGrid } from "./components/ToolGrid";
+import { ConversionTool } from "./components/ConversionTool";
+import { TTool } from "./types";
 
 export default function Home() {
   const [selectedTool, setSelectedTool] = useState<TTool | null>(null);
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       <Header />
-      
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -28,18 +28,17 @@ export default function Home() {
           </p>
         </div>
 
-        {!selectedTool ? (
-          <ToolGrid onToolSelect={setSelectedTool} />
-        ) : (
+        {selectedTool ? (
           <ConversionTool
             selectedTool={selectedTool}
             file={file}
             setFile={setFile}
             onBack={handleBack}
           />
+        ) : (
+          <ToolGrid onToolSelect={setSelectedTool} />
         )}
       </main>
     </div>
   );
 }
-

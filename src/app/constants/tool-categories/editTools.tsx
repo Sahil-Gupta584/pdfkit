@@ -1,4 +1,4 @@
-import { Merge, Split, Hash } from 'lucide-react';
+import { Merge, Split,  } from 'lucide-react';
 import { TTool } from '../../types';
 import { ToolCategory } from '../toolCategories';
 
@@ -10,7 +10,7 @@ export const editTools: TTool[] = [
     icon: <Merge />,
     category: ToolCategory.EDIT,
     acceptedTypes: ['application/pdf'],
-    taskType: 'merge',
+    handler: 'mergepdf',
   },
   {
     id: 'split-pdf',
@@ -19,7 +19,7 @@ export const editTools: TTool[] = [
     icon: <Split />,
     category: ToolCategory.EDIT,
     acceptedTypes: ['application/pdf'],
-    taskType: 'split',
+    handler: 'splitpdf',
   },
   // {
   //   id: 'rotate-pdf',
@@ -28,7 +28,7 @@ export const editTools: TTool[] = [
   //   icon: <RotateCw />,
   //   category: ToolCategory.EDIT,
   //   acceptedTypes: ['application/pdf'],
-  //   taskType: 'rotate',
+  //   handler: 'rotate',
   // },
   // {
   //   id: 'add-watermark',
@@ -37,15 +37,15 @@ export const editTools: TTool[] = [
   //   icon: <Stamp />,
   //   category: ToolCategory.EDIT,
   //   acceptedTypes: ['application/pdf'],
-  //   taskType: 'watermark',
+  //   handler: 'watermark',
   // },
-  {
-    id: 'add-page-numbers',
-    title: 'Add Page Numbers',
-    description: 'Add page numbers to PDF documents',
-    icon: <Hash />,
-    category: ToolCategory.EDIT,
-    acceptedTypes: ['application/pdf'],
-    taskType: 'pagenumber',
-  },
+  // {
+  //   id: 'add-page-numbers',
+  //   title: 'Add Page Numbers',
+  //   description: 'Add page numbers to PDF documents',
+  //   icon: <Hash />,
+  //   category: ToolCategory.EDIT,
+  //   acceptedTypes: ['application/pdf'],
+  //   handler: 'pagenumber',
+  // },
 ];

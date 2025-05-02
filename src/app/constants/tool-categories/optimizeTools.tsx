@@ -1,4 +1,4 @@
-import { Archive, FileSearch, Wrench } from 'lucide-react';
+import { Archive, FileSearch,  } from 'lucide-react';
 import React from 'react';
 import { TTool } from '../../types';
 import { ToolCategory } from '../toolCategories';
@@ -11,17 +11,17 @@ export const optimizeTools: TTool[] = [
     icon: <Archive />,
     category: ToolCategory.OPTIMIZE,
     acceptedTypes: ['application/pdf'],
-    taskType: 'compress',
+    handler: 'compresspdf',
   },
-  {
-    id: 'repair-pdf',
-    title: 'Repair PDF',
-    description: 'Fix corrupted or damaged PDF files',
-    icon: <Wrench />,
-    category: ToolCategory.OPTIMIZE,
-    acceptedTypes: ['application/pdf'],
-    taskType: 'repair',
-  },
+  // {
+  //   id: 'repair-pdf',
+  //   title: 'Repair PDF',
+  //   description: 'Fix corrupted or damaged PDF files',
+  //   icon: <Wrench />,
+  //   category: ToolCategory.OPTIMIZE,
+  //   acceptedTypes: ['application/pdf'],
+  //   handler: 'repair',
+  // },
   {
     id: 'ocr-pdf',
     title: 'OCR PDF',
@@ -29,6 +29,6 @@ export const optimizeTools: TTool[] = [
     icon: <FileSearch />,
     category: ToolCategory.OPTIMIZE,
     acceptedTypes: ['application/pdf'],
-    taskType: 'pdfocr',
+    handler: 'pdfocr',
   },
 ];

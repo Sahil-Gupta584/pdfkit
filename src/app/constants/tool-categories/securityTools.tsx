@@ -11,7 +11,7 @@ export const securityTools: TTool[] = [
     icon: <Lock />,
     category: ToolCategory.SECURITY,
     acceptedTypes: ['application/pdf'],
-    taskType: 'protect',
+    handler: 'lockpdf',
   },
   {
     id: 'unlock-pdf',
@@ -20,7 +20,7 @@ export const securityTools: TTool[] = [
     icon: <Unlock />,
     category: ToolCategory.SECURITY,
     acceptedTypes: ['application/pdf'],
-    taskType: 'unlock',
+    handler: 'unlockpdf',
   },
   // {
   //   id: 'sign-pdf',
@@ -29,6 +29,6 @@ export const securityTools: TTool[] = [
   //   icon: <FileSignature />,
   //   category: ToolCategory.SECURITY,
   //   acceptedTypes: ['application/pdf'],
-  //   taskType: 'sign',
+  //   handler: 'sign',
   // },
 ];
