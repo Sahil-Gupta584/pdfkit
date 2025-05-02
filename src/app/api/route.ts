@@ -296,7 +296,7 @@ export async function POST(req: NextRequest) {
       const arrayBuffer = await blob.arrayBuffer();
       outputBuffer = Buffer.from(arrayBuffer);
     }
-    
+
     if (!outputBuffer) {
       const streamAsset = await pdfServices.getContent({ asset: resultAsset });
       outputBuffer = await streamToBuffer(streamAsset.readStream);
@@ -305,21 +305,11 @@ export async function POST(req: NextRequest) {
     let contentType = "application/pdf";
 
     switch (tool.handler) {
-      case "docpdf":
+      case "pdfdocx":
         contentType = "application/msword";
         break;
 
-      case "pptxpdf":
-        contentType =
-          "application/vnd.openxmlformats-officedocument.presentationml.presentation";
-        break;
-
-      case "xlsxpdf":
-        contentType =
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        break;
-
-      case "rtfpdf":
+      case "pdfrtf":
         contentType = "application/rtf";
         break;
 
@@ -327,11 +317,8 @@ export async function POST(req: NextRequest) {
         contentType = "application/zip";
         break;
 
-      case "extractpdf":
-        contentType = "application/json";
-        break;
       default:
-        break;
+        contentType = "application/json";
     }
     console.log({ contentType, file });
 
